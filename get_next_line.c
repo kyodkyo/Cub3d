@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:27:12 by dakang            #+#    #+#             */
-/*   Updated: 2024/01/16 15:42:33 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/27 13:01:59 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	update_buffer(int fd, ssize_t *read_size, char **prev)
 			break ;
 		buffer[*read_size] = 0;
 		temp = *prev;
-		*prev = ft_strjoin(temp, buffer);
+		*prev = ft_strjoin_gnl(temp, buffer);
 		free(temp);
 		if (!(*prev))
 			return (1);

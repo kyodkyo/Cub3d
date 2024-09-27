@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakang <dakang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:27:17 by dakang            #+#    #+#             */
-/*   Updated: 2024/01/16 12:40:08 by dakang           ###   ########.fr       */
+/*   Updated: 2024/09/27 13:02:06 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strdup(char const *str)
 	return (res);
 }
 
-char	*ft_strjoin(char *temp, char const *buffer)
+char	*ft_strjoin_gnl(char *temp, char const *buffer)
 {
 	int		i;
 	int		len;
