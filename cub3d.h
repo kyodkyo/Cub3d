@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/26 20:01:31 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/27 12:33:31 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,23 @@ typedef struct s_player
 	double	plane_y; // 카메라 평면의 Y축 좌표
 }	t_player;
 
+typedef struct s_image
+{
+	char	*path;
+	int		width;
+	int		height;
+}	t_image;
+
+typedef struct s_color
+{
+	int				ceil[3];
+	int				ceil_flag;
+	unsigned int	c_color;
+	int				floor[3];
+	int				floor_flag;
+	unsigned int	f_color;
+}	t_color;
+
 typedef struct s_cub
 {
 	int			fd;
@@ -39,7 +56,13 @@ typedef struct s_cub
 	void		*mlx;
 	void		*win;
 	int			player_num;
+	int			**buf;
+	int			map_width;
+	int			map_height;
 	t_player	*player;
+	t_image		*img;
+	t_image		img[4];
+	t_color		*color;
 }	t_cub;
 
 #endif
