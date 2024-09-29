@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:04:51 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/29 16:12:26 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/30 00:14:42 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (!s)
+		return (0);
+	while (s[i])
 		i++;
 	return (i);
 }
