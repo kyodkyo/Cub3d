@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:27:21 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/27 13:02:10 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/29 16:58:55 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		make_line(char **prev, char **line);
 void	free_all(char **prev, char **line);
 char	*get_next_line(int fd);
 
-int		ft_strlen(char const *str);
+int		ft_strlen_gnl(char const *str);
 int		ft_strchr(char const *str);
 char	*ft_strdup(char const *str);
 char	*ft_strjoin_gnl(char *temp, char const *buffer);

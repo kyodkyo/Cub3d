@@ -6,13 +6,13 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:27:17 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/27 13:02:06 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/29 16:58:36 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char const *str)
+int	ft_strlen_gnl(char const *str)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ char	*ft_strjoin_gnl(char *temp, char const *buffer)
 	char	*res;
 
 	i = 0;
-	len = ft_strlen(temp) + ft_strlen(buffer);
+	len = ft_strlen_gnl(temp) + ft_strlen_gnl(buffer);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (res == NULL)
 		return (NULL);
@@ -80,7 +80,7 @@ char	*ft_substr(char const *str, int start, int end)
 	char	*res;
 
 	i = 0;
-	len = ft_strlen(str);
+	len = ft_strlen_gnl(str);
 	if (str == NULL)
 	{
 		res = ft_strdup("");
