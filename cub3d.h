@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/27 12:33:31 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/29 16:44:50 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@
 # include <fcntl.h>
 
 # include "mlx/mlx.h"
-# include "get_next_line.h"
+# include "gnl/get_next_line.h"
+# include "libft/libft.h"
+
+typedef enum e_dir
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	t_dir;
 
 typedef struct s_player
 {
@@ -33,9 +42,12 @@ typedef struct s_player
 
 typedef struct s_image
 {
+	void	*init;
 	char	*path;
-	int		width;
-	int		height;
+	int		*data;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 }	t_image;
 
 typedef struct s_color
@@ -60,9 +72,20 @@ typedef struct s_cub
 	int			map_width;
 	int			map_height;
 	t_player	*player;
-	t_image		*img;
+	t_image		*image;
 	t_image		img[4];
 	t_color		*color;
 }	t_cub;
+
+
+/** parsing */
+void	check_color(char *line, int *count, t_cub *cub);
+void	check_dir(char *line, int *count, t_cub *cub);
+void	init(t_cub *cub, char *file);
+void	cub_error(char *str);
+int		free_arr(char **str, int flag);
+int		check_file(char *str);
+void	dir_color_check(char *line, int *count, t_cub *cub);
+void	valid_map_check(char *line, char **map, t_cub *cub);
 
 #endif

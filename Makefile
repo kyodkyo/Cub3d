@@ -2,22 +2,25 @@ NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS = 
+MLX_DIR = ./mlx
+MLX = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+
+SRCS = main.c libft/ft_atoi.c libft/ft_split.c libft/ft_strcpy.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strncmp.c \
+	gnl/get_next_line.c gnl/get_next_line_utils.c parse/color.c parse/dir.c parse/init.c parse/utils.c parse/valid_check.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C ./mlx
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make -C ./mlx clean
+	make -C $(MLX_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
