@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/29 16:44:50 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/29 23:16:14 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
+
+# define WIDTH 1920
+# define HEIGHT 1080
 
 typedef enum e_dir
 {
@@ -66,7 +69,7 @@ typedef struct s_cub
 	char		*map;
 	char		**map_arr;
 	void		*mlx;
-	void		*win;
+	void		*window;
 	int			player_num;
 	int			**buf;
 	int			map_width;
@@ -87,5 +90,10 @@ int		free_arr(char **str, int flag);
 int		check_file(char *str);
 void	dir_color_check(char *line, int *count, t_cub *cub);
 void	valid_map_check(char *line, char **map, t_cub *cub);
+void	check_map(t_cub *cub);
+int		is_only_space(char *line);
+void	is_valid_wall(char **map);
+void	make_map(t_cub *cub);
+void	check_map(t_cub *cub);
 
 #endif

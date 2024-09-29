@@ -7,7 +7,9 @@ MLX_DIR = ./mlx
 MLX = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 SRCS = main.c libft/ft_atoi.c libft/ft_split.c libft/ft_strcpy.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strncmp.c \
-	gnl/get_next_line.c gnl/get_next_line_utils.c parse/color.c parse/dir.c parse/init.c parse/utils.c parse/valid_check.c
+	gnl/get_next_line.c gnl/get_next_line_utils.c parse/color.c parse/dir.c parse/init.c parse/map.c parse/mlx.c \
+	parse/utils.c parse/valid_check.c parse/wall.c
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
