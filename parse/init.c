@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:54:08 by dakyo             #+#    #+#             */
-/*   Updated: 2024/09/29 16:56:20 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/30 00:18:21 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_cub(t_cub *cub, char *file)
 
 	cub->fd = open(file, O_RDONLY);
 	if (cub->fd < 0)
-		cub_error("file open error\n");
+		cub_error("file open error");
 	cub->map = NULL;
 	cub->map_arr = NULL;
 	cub->player_num = 0;
@@ -58,9 +58,52 @@ void	save_map(t_cub *cub)
 		else
 			valid_map_check(line, &cub->map, cub);
 		free(line);
+		line = NULL;
 	}
 	close(cub->fd);
 	free(line);
+}
+
+void	check_dir_dup(t_cub *cub)
+{
+	int		i;
+	int		j;
+	char	*tmp[5];
+
+	i = -1;
+	tmp[0] = cub->img[NORTH].path;
+	tmp[1] = cub->img[SOUTH].path;
+	tmp[2] = cub->img[WEST].path;
+	tmp[3] = cub->img[EAST].path;
+	tmp[4] = 0;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+		{
+			if (i == j)
+				continue ;
+			else
+			{
+				if (!(ft_strncmp(tmp[i], tmp[j], ft_strlen(tmp[j]))))
+					cub_error("direction dup error");
+			}
+		}
+	}
+}
+
+void	check_color_dup(t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (cub->color->ceil[i] != cub->color->floor[i])
+			return ;
+		i++;
+	}
+	cub_error("color dupicate error");
 }
 
 void	init(t_cub *cub, char *file)
@@ -72,5 +115,7 @@ void	init(t_cub *cub, char *file)
 	save_map(cub);
 	if (!cub->map)
 		cub_error("map error");
-	//check_map();
+	check_map(cub);
+	check_dir_dup(cub);
+	check_color_dup(cub);
 }

@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:53:42 by dakyo             #+#    #+#             */
-/*   Updated: 2024/09/29 17:08:01 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/30 00:16:14 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,13 @@ int	check_file(char *str)
 	return (free_arr(tmp, 0));
 }
 
-int	is_space(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 void	dir_color_check(char *line, int *count, t_cub *cub)
 {
 	char	**tmp;
 
 	if (line[0] == '\n' && !(line[1]))
 		return ;
-	if (is_space(line))
+	if (is_only_space(line))
 		cub_error("only space error");
 	tmp = ft_split(line, ' ');
 	if (!tmp)
@@ -72,8 +58,8 @@ int	is_valid_value(char *line, t_cub *cub)
 {
 	int	i;
 
-	i = 0;
-	while (i < ft_strlen(line))
+	i = -1;
+	while (++i < ft_strlen(line))
 	{
 		if (line[i] == '0' || line[i] == '1'
 			|| line[i] == ' ' || line[i] == '\n')
@@ -83,7 +69,6 @@ int	is_valid_value(char *line, t_cub *cub)
 			cub->player_num++;
 		else
 			return (0);
-		i++;
 	}
 	return (1);
 }

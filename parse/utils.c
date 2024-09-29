@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:34:06 by dakyo             #+#    #+#             */
-/*   Updated: 2024/09/29 17:04:43 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/29 22:37:04 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,18 @@ int	free_arr(char **str, int flag)
 		free(str[i++]);
 	free(str);
 	return (flag);
+}
+
+int	is_only_space(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }
