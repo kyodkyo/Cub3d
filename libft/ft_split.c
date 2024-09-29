@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakang <dakang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:53:25 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/23 19:55:46 by dakang           ###   ########.fr       */
+/*   Updated: 2024/09/29 16:50:37 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	error_exit(char *str)
+{
+	printf("%s\n", str);
+	exit(1);
+}
 
 void	*split_free(char **str, int i)
 {
@@ -28,7 +34,7 @@ int	count_word(char const *str, char c)
 	int	count;
 
 	if (!str)
-		error_exit();
+		error_exit("error");
 	count = 0;
 	while (*str)
 	{

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 13:04:51 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/29 16:12:26 by dakyo            ###   ########.fr       */
+/*   Created: 2023/10/07 15:46:31 by dakang            #+#    #+#             */
+/*   Updated: 2024/09/29 16:06:12 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+char	*ft_strcpy(const char *string)
 {
-	int	i;
+	int		i;
+	int		count;
+	char	*res;
 
 	i = 0;
-	while (s[i] != '\0')
+	count = ft_strlen(string);
+	res = (char *)malloc(count * sizeof(char) + 1);
+	if (!res)
+		return (0);
+	while (string[i])
+	{
+		res[i] = string[i];
 		i++;
-	return (i);
+	}
+	res[i] = '\0';
+	return (res);
 }
