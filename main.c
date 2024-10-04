@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:58 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/29 23:31:31 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/09/30 00:44:18 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	main(int argc, char **argv)
 		cub_error("file error");
 	init(&cub, argv[1]);
 	make_map(&cub);
-	// execute
+	execute(&cub);
 }

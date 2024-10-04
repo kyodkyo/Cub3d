@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/09/29 23:16:14 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/04 21:50:57 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
@@ -33,14 +34,44 @@ typedef enum e_dir
 	WEST
 }	t_dir;
 
+typedef struct s_dda
+{
+	int		dir;
+	int		side;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		wall_height;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+}	t_dda;
+
+typedef struct s_raycast
+{
+	int		start;
+	int		end;
+	int		color;
+	int		tex_x;
+	int		tex_y;
+	int		tex_dir;
+	double	step;
+	double	tex_pos;
+	double	ray_dir_x;
+	double	ray_dir_y;
+}	t_ray;
+
 typedef struct s_player
 {
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double	plane_x; // 카메라 평면의 X축 좌표
-	double	plane_y; // 카메라 평면의 Y축 좌표
+	double	plane_x;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_image
@@ -80,8 +111,7 @@ typedef struct s_cub
 	t_color		*color;
 }	t_cub;
 
-
-/** parsing */
+/** parse */
 void	check_color(char *line, int *count, t_cub *cub);
 void	check_dir(char *line, int *count, t_cub *cub);
 void	init(t_cub *cub, char *file);
@@ -95,5 +125,10 @@ int		is_only_space(char *line);
 void	is_valid_wall(char **map);
 void	make_map(t_cub *cub);
 void	check_map(t_cub *cub);
+
+/** execute */
+void	execute(t_cub *cub);
+void	init_dda_ray(t_cub *cub, t_dda *dda, t_ray *ray, int i);
+void	run_dda(t_cub *cub, t_dda *dda);
 
 #endif
