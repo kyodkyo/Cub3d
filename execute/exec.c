@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 00:53:31 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/04 21:45:11 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/06 23:23:21 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,44 @@ void	raycasting(t_cub *cub)
 	{
 		init_dda_ray(cub, &dda, &ray, i);
 		run_dda(cub, &dda);
+		set_texture_dir(dda.side, &ray);
+		calc_wall_size(&dda, &ray);
+		calc_texture_x(cub, &dda, &ray);
+		calc_texture_y(cub, &dda, ray, i);
 		i++;
 	}
+}
+
+void	draw_cub(t_cub *cub)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			cub->image->data[x + y * WIDTH] = cub->buf[y][x];
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(cub->mlx, cub->window, cub->image->init, 0, 0);
+}
+
+int	key_press(t_cub *cub)
+{
+	mlx_hook(cub->window, KEY_PRESS, 0, &play_game, cub);
+	mlx_hook(cub->window, KEY_EXIT, 0, &close_window, cub);
 }
 
 void	execute(t_cub *cub)
 {
 	fill_color(cub);
 	raycasting(cub);
-	// draw_cub();
-	// mlx_hook(game->win, 2, 0, &update_frame, game);
-	// mlx_hook(game->win, 17, 0, &destroy_win, game);
-	// mlx_loop(cub->mlx);
+	draw_cub(cub);
+	key_press(cub);
+	mlx_loop(cub->mlx);
 }
