@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 21:40:09 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/04 21:50:48 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/06 22:10:41 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ void	init_dda_ray(t_cub *cub, t_dda *dda, t_ray *ray, int i)
 	init_side_dist(cub, dda, ray);
 }
 
+bool	check_wall_hit(t_cub *cub, t_dda *dda)
+{
+	bool	hit;
+	char	pixel;
+
+	hit = false;
+	pixel = cub->map_arr[dda->map_x][dda->map_y];
+	if (dda->map_x >= 0 && dda->map_y >= 0 && pixel == '1')
+		hit = true;
+	return (hit);
+}
+
 void	run_dda(t_cub *cub, t_dda *dda)
 {
 	bool	hit;
@@ -70,6 +82,18 @@ void	run_dda(t_cub *cub, t_dda *dda)
 	hit = false;
 	while (hit == false)
 	{
-
+		if (dda->side_dist_x < dda->side_dist_y)
+		{
+			dda->side_dist_x += dda->delta_dist_x;
+			dda->map_x += dda->step_x;
+			dda->side = WALL_X;
+		}
+		else
+		{
+			dda->side_dist_y += dda->delta_dist_y;
+			dda->map_y += dda->step_y;
+			dda->side = WALL_Y;
+		}
+		hit = check_wall_hit(cub, dda);
 	}
 }
