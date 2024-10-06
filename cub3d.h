@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/10/04 21:50:57 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/06 23:25:47 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <math.h>
 
 # include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
@@ -25,6 +26,12 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define WALL_X 0
+# define WALL_Y 1
+# define KEY_PRESS 2
+# define KEY_EXIT 17
+# define KEY_ESC 53
+
 
 typedef enum e_dir
 {
@@ -130,5 +137,11 @@ void	check_map(t_cub *cub);
 void	execute(t_cub *cub);
 void	init_dda_ray(t_cub *cub, t_dda *dda, t_ray *ray, int i);
 void	run_dda(t_cub *cub, t_dda *dda);
+void	set_texture_dir(int side, t_ray *ray);
+void	calc_wall_size(t_dda *dda, t_ray *ray);
+void	calc_texture_x(t_cub *cub, t_dda *dda, t_ray *ray);
+void	calc_texture_y(t_cub *cub, t_dda *dda, t_ray ray, int i);
+int		close_window(t_cub *cub);
+int		play_game(int keycode, t_cub *cub);
 
 #endif
