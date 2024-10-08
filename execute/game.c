@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:27:46 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/08 17:49:24 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 20:32:59 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int	close_window(t_cub *cub)
 
 void	move_player(t_cub *cub, double dx, double dy)
 {
-	int		cur_x;
-	int		cur_y;
 	char	**map;
 
-	cur_x = cub->player->pos_x;
-	cur_y = cub->player->pos_y;
 	map = cub->map_arr;
-	if (map[(int)(cur_x + dx)][(int)cur_y] != '1')
+	if (map[(int)(cub->player->pos_x + dx)] \
+		[(int)cub->player->pos_y] != '1')
 		cub->player->pos_x += dx;
-	if (map[(int)cur_x][(int)(cur_y + dy)] != '1')
+	if (map[(int)cub->player->pos_x] \
+		[(int)(cub->player->pos_y + dy)] != '1')
 		cub->player->pos_y += dy;
 	mlx_clear_window(cub->mlx, cub->window);
 	execute(cub);
