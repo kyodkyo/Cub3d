@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:40:58 by dakyo             #+#    #+#             */
-/*   Updated: 2024/09/29 17:10:42 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 20:00:41 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ void	put_image(int dir, char *path, int *count, t_cub *cub)
 	n_path = ft_strcpy(path);
 	if (dir == NORTH)
 	{
-		load_mlx(&(cub->img[NORTH]), path, cub);
+		load_mlx(&(cub->img[SOUTH]), path, cub);
 		cub->img[NORTH].path = n_path;
 	}
 	else if (dir == SOUTH)
 	{
-		load_mlx(&(cub->img[SOUTH]), path, cub);
+		load_mlx(&(cub->img[NORTH]), path, cub);
 		cub->img[SOUTH].path = n_path;
 	}
 	else if (dir == EAST)
 	{
-		load_mlx(&(cub->img[EAST]), path, cub);
+		load_mlx(&(cub->img[WEST]), path, cub);
 		cub->img[EAST].path = n_path;
 	}
 	else if (dir == WEST)
 	{
-		load_mlx(&(cub->img[WEST]), path, cub);
+		load_mlx(&(cub->img[EAST]), path, cub);
 		cub->img[WEST].path = n_path;
 	}
 	(*count)++;

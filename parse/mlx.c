@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 22:59:04 by dakyo             #+#    #+#             */
-/*   Updated: 2024/09/29 23:15:15 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 20:17:33 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ char	set_player(int i, int j, char pos, t_cub *cub)
 	}
 	else if (pos == 'E')
 	{
-		cub->player->dir_y = -1;
-		cub->player->plane_x = -0.66;
+		cub->player->dir_y = 1;
+		cub->player->plane_x = 0.66;
 	}
 	else if (pos == 'W')
 	{
-		cub->player->dir_y = 1;
-		cub->player->plane_x = 0.66;
+		cub->player->dir_y = -1;
+		cub->player->plane_x = -0.66;
 	}
 	else
 		return (0);
