@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:27:46 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/08 17:35:51 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:49:24 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	rotate_player(t_cub *cub, int dir)
 	plane_x = cub->player->plane_x;
 	plane_y = cub->player->plane_y;
 	if (dir == 2)
-		angle *= -1;
+		angle = -angle;
 	cub->player->dir_x = cos(angle) * dir_x - sin(angle) * dir_y;
-	cub->player->dir_y = sin(angle) * dir_x - cos(angle) * dir_y;
+	cub->player->dir_y = sin(angle) * dir_x + cos(angle) * dir_y;
 	cub->player->plane_x = cos(angle) * plane_x - sin(angle) * plane_y;
-	cub->player->plane_y = sin(angle) * plane_x - cos(angle) * plane_y;
+	cub->player->plane_y = sin(angle) * plane_x + cos(angle) * plane_y;
 	mlx_clear_window(cub->mlx, cub->window);
 	execute(cub);
 }
