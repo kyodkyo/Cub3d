@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:30:26 by dakang            #+#    #+#             */
-/*   Updated: 2024/10/06 23:25:47 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 16:51:38 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,23 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+
 # define WALL_X 0
 # define WALL_Y 1
+
+# define MOVE_SPEED 0.1
+# define ROTATION_SPEED 50
+
 # define KEY_PRESS 2
 # define KEY_EXIT 17
-# define KEY_ESC 53
 
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
 
 typedef enum e_dir
 {
