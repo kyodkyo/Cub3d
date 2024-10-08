@@ -6,11 +6,11 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 22:32:56 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/06 23:16:07 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:35:45 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	set_texture_dir(int side, t_ray *ray)
 {

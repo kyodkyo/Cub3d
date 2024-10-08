@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 00:53:31 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/06 23:23:21 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:36:24 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	draw_cub(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx, cub->window, cub->image->init, 0, 0);
 }
 
-int	key_press(t_cub *cub)
+void	key_press(t_cub *cub)
 {
 	mlx_hook(cub->window, KEY_PRESS, 0, &play_game, cub);
 	mlx_hook(cub->window, KEY_EXIT, 0, &close_window, cub);

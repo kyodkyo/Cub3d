@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 21:40:09 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/06 22:10:41 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:36:09 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 double	ft_abs(double num)
 {
 	if (num < 0)
-		rerturn (-num);
+		return (-num);
 	return (num);
 }
 
