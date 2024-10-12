@@ -6,7 +6,7 @@
 /*   By: dakyo <dakyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 22:32:56 by dakyo             #+#    #+#             */
-/*   Updated: 2024/10/08 17:35:45 by dakyo            ###   ########.fr       */
+/*   Updated: 2024/10/12 16:55:30 by dakyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ void	calc_texture_x(t_cub *cub, t_dda *dda, t_ray *ray)
 		pos = cub->player->pos_x + dda->perp_wall_dist * ray->ray_dir_x;
 	pos -= floor(pos);
 	ray->tex_x = (int)(pos * 64.0);
-	if ((dda->side == WALL_X && ray->ray_dir_x > 0)
-		|| (dda->side == WALL_Y && ray->ray_dir_x < 0))
+	if (dda->side == WALL_X && ray->ray_dir_x > 0)
+		ray->tex_x = 64.0 - ray->tex_x - 1;
+	if (dda->side == WALL_Y && ray->ray_dir_y < 0)
 		ray->tex_x = 64.0 - ray->tex_x - 1;
 }
 
@@ -70,7 +71,7 @@ void	calc_texture_y(t_cub *cub, t_dda *dda, t_ray ray, int i)
 	j = ray.start;
 	while (j < ray.end)
 	{
-		ray.tex_y = (int)ray.tex_dir & 63;
+		ray.tex_y = (int)ray.tex_pos & 63;
 		ray.tex_pos += ray.step;
 		ray.color = cub->img[ray.tex_dir].data[64 * ray.tex_y + ray.tex_x];
 		if (dda->side == WALL_Y)
